@@ -1,2 +1,1 @@
-# Belochcki-patterns-DeskTop-Client
-
+Это вторая версия клиентского фронта для Scum банка. Теперь на desktop.
