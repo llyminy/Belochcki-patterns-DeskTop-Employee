@@ -33,11 +33,11 @@ export const MainPage = () => {
     <Box sx={{ display: "flex", gap: 2, alignItems: "center" , flexDirection: "column", width: "80%", ml: "10%", mr: "10%", mt: "20%"}}>
 
         <Box sx={{ display: "flex"}}>
-            <Button color="inherit" component={Link} to="/credit-tariffs" sx={{width: "40%", ml: "5%", mr: "5%"}}>
+            <Button color="inherit" component={Link} to="/accounts" sx={{width: "40%", ml: "5%", mr: "5%"}}>
                 Все ваши счета.
                 Перейдите на страницу просмотра и работы с дебетовыми и кредитными счетами!
             </Button>
-            <Button color="inherit" component={Link} to="/tariffs" sx={{width: "40%", ml: "5%", mr: "5%" }}>
+            <Button color="inherit" component={Link} to="/credit-tariffs" sx={{width: "40%", ml: "5%", mr: "5%" }}>
                 Предложения по кредитам.
                 Посмотрите все наши лучшие предложения по кредитам.
             </Button>

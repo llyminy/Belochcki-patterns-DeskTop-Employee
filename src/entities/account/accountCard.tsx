@@ -19,12 +19,13 @@ export const AccountCard = ({ account: account }: Props) => {
       sx={{ cursor: "pointer" }}>
       <CardContent>
         <Typography variant="h6">{account.name}</Typography>
+        <Typography variant="h6">{account.id}</Typography>
         <Typography variant="h6">{account.balance}</Typography>
         <Typography variant="h6">{account.CurrencyCode}</Typography>
         <Typography variant="h6">{account.status}</Typography>
         <Typography variant="caption" display="block" sx={{ mt: 2 }}>
-          {new Date(account.createdTime + account.createdDate).toLocaleString()}
-        </Typography>
+          {`${account.createdDate} ${account.createdTime}`}
+        </Typography> 
       </CardContent>
     </Card>
   );
@@ -43,11 +44,12 @@ export const CreditAccountCard = ({ account: account }: Props) => {
       sx={{ cursor: "pointer" }}>
       <CardContent sx={{ p: 4, width: "100%", display: "flex",  flexDirection: "column" }}>
         <Typography variant="h6">{account.name}</Typography>
+        <Typography variant="h6">{account.id}</Typography>
         <Typography variant="h6">{account.balance}</Typography>
         <Typography variant="h6">{account.CurrencyCode}</Typography>
         <Typography variant="h6">{account.status}</Typography>
         <Typography variant="caption" display="block" sx={{ mt: 2 }}>
-          {new Date(account.createdTime + account.createdDate).toLocaleString()}
+          {`${account.createdDate} ${account.createdTime}`}
         </Typography>
       </CardContent>
     </Card>

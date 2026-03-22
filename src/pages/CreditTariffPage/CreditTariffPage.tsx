@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
 import DataTable from "../../entities/DataTable";
 import CreditTariffForm from "../../entities/creditTariff/CreditTariffForm";
 import { creditTariffUseCase } from "../../useCases/CreditTariffUseCase";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function CreditTariffPage() {
+  const [search, setSearch] = useState("");
   const [data, setData] = useState<any[]>([]);
   const [editing, setEditing] = useState<any | null>(null);
   const [creating, setCreating] = useState(false);
@@ -16,6 +17,15 @@ export default function CreditTariffPage() {
     const res = await creditTariffUseCase.getTariffs();
     setData(res);
   };
+
+  const filtered = data.filter((u) => {
+    const searchValue = search.toLowerCase();
+
+    return (
+      (u.id && u.id.toLowerCase().includes(searchValue)) ||
+      (u.name && u.name.toLowerCase().includes(searchValue))
+    );
+  });
 
   useEffect(() => {
     load();
@@ -34,6 +44,14 @@ export default function CreditTariffPage() {
     <Box sx={{ p: 3 }}>
       <Typography variant="h4">Credit Tariffs</Typography>
 
+      <Box sx={{ display: "flex", gap: 2, my: 2, alignItems: "center" }}>
+        <TextField
+          label="Поиск"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </Box>
+
       <Button variant="contained" sx={{ my: 2 }} onClick={() => setCreating(true)}>
         Create Tariff
       </Button>
@@ -50,8 +68,9 @@ export default function CreditTariffPage() {
       )}
 
       <DataTable
-        data={data}
+        data={filtered}
         columns={[
+            { field: "id", label: "id" },
             { field: "name", label: "Name" },
             { field: "description", label: "Description" },
             { field: "amountFrom", label: "From" },
