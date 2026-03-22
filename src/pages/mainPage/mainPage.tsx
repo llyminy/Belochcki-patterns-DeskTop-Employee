@@ -1,6 +1,6 @@
 import { Link} from "react-router-dom";
-import { Box, Button } from "@mui/material";
 import {useEffect} from "react";
+import "./MainPage.css";
 
 
 
@@ -29,33 +29,36 @@ export const MainPage = () => {
         }
       }, []);
 
-  return (
-    <Box sx={{ display: "flex", gap: 2, alignItems: "center" , flexDirection: "column", width: "80%", ml: "10%", mr: "10%", mt: "20%"}}>
+    return (
+        <div className="main-page">
+            <h1 className="main-title">Главное меню</h1>
 
-        <Box sx={{ display: "flex"}}>
-            <Button color="inherit" component={Link} to="/accounts" sx={{width: "40%", ml: "5%", mr: "5%"}}>
-                Все ваши счета.
-                Перейдите на страницу просмотра и работы с дебетовыми и кредитными счетами!
-            </Button>
-            <Button color="inherit" component={Link} to="/credit-tariffs" sx={{width: "40%", ml: "5%", mr: "5%" }}>
-                Предложения по кредитам.
-                Посмотрите все наши лучшие предложения по кредитам.
-            </Button>
-        </Box>
-        <Box sx={{ display: "flex"}}>
-            <Button color="inherit" component={Link} to="/credits" sx={{width: "40%", ml: "5%", mr: "5%" }}>
-                Ваши кредиты.
-                Перейдите на старницу с вашими актуальными кредитами!
-            </Button>
-            <Button color="inherit" component={Link} to="/abountUs" sx={{width: "40%", ml: "5%", mr: "5%" }}>
-                Инфомация о нас.
-            </Button>
-        </Box>
-        <Box sx={{ display: "flex"}}>
-            <Button color="inherit" component={Link} to="/users" sx={{width: "40%", ml: "5%", mr: "5%" }}>
-                Информация о пользователях
-            </Button>
-        </Box>
-    </Box>
-  );
+            <div className="card-grid">
+                <Link to="/accounts" className="card">
+                <h3>Счета</h3>
+                <p>Просмотр и управление дебетовыми и кредитными счетами</p>
+                </Link>
+
+                <Link to="/credit-tariffs" className="card">
+                <h3>Кредитные тарифы</h3>
+                <p>Лучшие предложения по кредитам</p>
+                </Link>
+
+                <Link to="/credits" className="card">
+                <h3>Кредиты</h3>
+                <p>Управление активными кредитами</p>
+                </Link>
+
+                <Link to="/abountUs" className="card">
+                <h3>О нас</h3>
+                <p>Информация о нас</p>
+                </Link>
+
+                <Link to="/users" className="card">
+                <h3>Пользователи</h3>
+                <p>Информация о пользователях системы</p>
+                </Link>
+            </div>
+        </div>
+    );
 };

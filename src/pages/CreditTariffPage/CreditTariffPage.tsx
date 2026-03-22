@@ -42,7 +42,7 @@ export default function CreditTariffPage() {
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4">Credit Tariffs</Typography>
+      <Typography variant="h4">Кредитные тарифы</Typography>
 
       <Box sx={{ display: "flex", gap: 2, my: 2, alignItems: "center" }}>
         <TextField
@@ -53,7 +53,7 @@ export default function CreditTariffPage() {
       </Box>
 
       <Button variant="contained" sx={{ my: 2 }} onClick={() => setCreating(true)}>
-        Create Tariff
+        Создать тариф
       </Button>
 
       {(creating || editing) && (
@@ -71,11 +71,11 @@ export default function CreditTariffPage() {
         data={filtered}
         columns={[
             { field: "id", label: "id" },
-            { field: "name", label: "Name" },
-            { field: "description", label: "Description" },
-            { field: "amountFrom", label: "From" },
-            { field: "amountTo", label: "To" },
-            { field: "interestRate", label: "Rate %" },
+            { field: "name", label: "Название" },
+            { field: "description", label: "Описание" },
+            { field: "amountFrom", label: "Цена от" },
+            { field: "amountTo", label: "Цена до" },
+            { field: "interestRate", label: "Процент %" },
         ]}
         onEdit={(row) => setEditing(row)}
         onDelete={(id) => creditTariffUseCase.delete(id).then(load)}
