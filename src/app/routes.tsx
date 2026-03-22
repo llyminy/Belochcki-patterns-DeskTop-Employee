@@ -20,7 +20,6 @@ import  UserDetailsPage from "../pages/ManagementPage/UserDetailPage.tsx";
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/login" element={<MainPage />} />
       <Route path="/" element={<Navigate to="/main" replace />} />
  
       <Route element={<MainLayout />}>

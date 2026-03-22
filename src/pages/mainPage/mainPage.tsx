@@ -14,6 +14,12 @@ export const MainPage = () => {
           window.history.replaceState({}, document.title, "/");
         }
         console.log(token);
+
+        const testToken = localStorage.getItem('accessToken');
+
+        if (!testToken){
+            window.location.href = "http://localhost:666/main";
+        }
       }, []);
 
   return (
@@ -22,7 +28,7 @@ export const MainPage = () => {
         <Box sx={{ display: "flex"}}>
             <Button color="inherit" component={Link} to="/credit-tariffs" sx={{width: "40%", ml: "5%", mr: "5%"}}>
                 Все ваши счета.
-                Перейдите на страницу просмотра и работы с дебетовыми и кредитными счетми!
+                Перейдите на страницу просмотра и работы с дебетовыми и кредитными счетами!
             </Button>
             <Button color="inherit" component={Link} to="/tariffs" sx={{width: "40%", ml: "5%", mr: "5%" }}>
                 Предложения по кредитам.
