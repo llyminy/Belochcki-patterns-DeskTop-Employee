@@ -1,41 +1,76 @@
-import { Table, TableBody, TableCell, TableHead, TableRow, Button } from "@mui/material";
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Button,
+} from "@mui/material";
 
-interface DataTableProps {
-  data: any[];
-  onDelete: (id: string) => void;
-  onLock: (user: any) => void;
-  onEdit: (user: any) => void;
-  onRowClick: (user: any) => void;
+interface Column {
+  field: string;
+  label: string;
 }
 
-export default function DataTable({ data, onDelete, onLock, onEdit, onRowClick }: DataTableProps) {
+interface Props<T> {
+  data: T[];
+  columns: Column[];
+  onEdit?: (row: T) => void;
+  onDelete?: (id: string) => void;
+  onLock?: (row: T) => void;
+  onRowClick?: (row: T) => void;
+}
+
+export default function DataTable<T extends { id: string }>({
+  data,
+  columns,
+  onEdit,
+  onDelete,
+  onLock,
+  onRowClick,
+}: Props<T>) {
   return (
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>Name</TableCell>
-          <TableCell>Login</TableCell>
-          <TableCell>Status</TableCell>
-          <TableCell>Actions</TableCell>
+          {columns.map((col) => (
+            <TableCell key={col.field}>{col.label}</TableCell>
+          ))}
+          {(onEdit || onDelete || onLock) && <TableCell>Actions</TableCell>}
         </TableRow>
       </TableHead>
+
       <TableBody>
-        {data.map((user) => (
-          <TableRow key={user.id} hover onClick={() => onRowClick(user)} sx={{ cursor: "pointer" }}>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.login}</TableCell>
-            <TableCell>{user.status}</TableCell>
-            <TableCell sx={{ display: "flex", gap: 1 }}>
-              <Button size="small" variant="outlined" onClick={(e) => { e.stopPropagation(); onEdit(user); }}>
-                Edit
-              </Button>
-              <Button size="small" variant="outlined" onClick={(e) => { e.stopPropagation(); onLock(user); }}>
-                {user.status === "LOCKED" ? "Unlock" : "Lock"}
-              </Button>
-              <Button size="small" color="error" variant="outlined" onClick={(e) => { e.stopPropagation(); onDelete(user.id); }}>
-                Delete
-              </Button>
-            </TableCell>
+        {data.map((row) => (
+          <TableRow
+            key={row.id}
+            hover
+            onClick={() => onRowClick?.(row)}
+            sx={{ cursor: onRowClick ? "pointer" : "default" }}
+          >
+            {columns.map((col) => (
+              <TableCell key={col.field}>
+                {String((row as any)[col.field] ?? "")}
+              </TableCell>
+            ))}
+
+            {(onEdit || onDelete || onLock) && (
+              <TableCell
+                onClick={(e) => e.stopPropagation()}
+              >
+                {onEdit && (
+                  <Button onClick={() => onEdit(row)}>Edit</Button>
+                )}
+                {onDelete && (
+                  <Button onClick={() => onDelete(row.id)}>Delete</Button>
+                )}
+                {onLock && (
+                  <Button onClick={() => onLock(row)}>
+                    Toggle Lock
+                  </Button>
+                )}
+              </TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>

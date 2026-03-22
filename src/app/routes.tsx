@@ -4,6 +4,8 @@ import  MainLayout  from "../shared/ui/layout/mainLayout.tsx";
 
 import  ManagementPage from "../pages/ManagementPage/ManagementPage.tsx";
 import  UserDetailsPage from "../pages/ManagementPage/UserDetailPage.tsx";
+import  CreditTariffPage from "../pages/CreditTariffPage/CreditTariffPage.tsx";
+import  CreditTariffDetailPage from "../pages/CreditTariffPage/CreditTariffDetailPage.tsx";
 import { Error500Page } from "../pages/error500/error500.tsx";
 
 export const AppRoutes = () => {
@@ -16,6 +18,9 @@ export const AppRoutes = () => {
       <Route element={<MainLayout />}>
       <Route path="/user/:type/:id" element={<UserDetailsPage />} />
       </Route>
+
+      <Route path="/credit-tariffs" element={<CreditTariffPage />} />
+      <Route path="/credit-tariffs/:id" element={<CreditTariffDetailPage />} />
  
       <Route element={<MainLayout />}>
         <Route path="*" element={<h1>Страница не найдена</h1>} />

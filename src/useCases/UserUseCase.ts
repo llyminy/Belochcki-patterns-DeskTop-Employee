@@ -1,37 +1,65 @@
-import axios from "axios";
-
-const API_BASE = "http://localhost:8085/api";
-const getToken = () => localStorage.getItem("token");
+import { userApi } from "../shared/api/userApi";
+import type { Client, Employee, User } from "../types/User";
 
 export const userUseCase = {
-  getUsers: async (type: "clients" | "employees") => {
-    const res = await axios.get(`${API_BASE}/${type}`, { headers: { Authorization: `Bearer ${getToken()}` } });
-    return res.data;
+  getUsers: async (
+    type: "clients" | "employees"
+  ): Promise<User[]> => {
+    return type === "clients"
+      ? await userApi.getClients()
+      : await userApi.getEmployees();
   },
 
-  getUserById: async (type: "clients" | "employees", id: string) => {
-    const res = await axios.get(`${API_BASE}/${type}/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } });
-    return res.data;
+  getUserById: async (
+    type: "clients" | "employees",
+    id: string
+  ): Promise<User> => {
+    return type === "clients"
+      ? await userApi.getClientById(id)
+      : await userApi.getEmployeeById(id);
   },
 
-  createUser: async (type: "clients" | "employees", user: any) => {
-    const res = await axios.post(`${API_BASE}/${type}`, user, { headers: { Authorization: `Bearer ${getToken()}` } });
-    return res.data;
+  createUser: async (
+    type: "clients" | "employees",
+    data: Partial<User>
+  ): Promise<Client | Employee> => {
+    return type === "clients"
+      ? await userApi.createClient(data as Client)
+      : await userApi.createEmployee(data as Employee);
   },
 
-  updateUser: async (type: "clients" | "employees", id: string, user: any) => {
-    const res = await axios.put(`${API_BASE}/${type}/${id}`, user, { headers: { Authorization: `Bearer ${getToken()}` } });
-    return res.data;
+  updateUser: async (
+    type: "clients" | "employees",
+    id: string,
+    data: Partial<User>
+  ): Promise<Client | Employee> => {
+    return type === "clients"
+      ? await userApi.updateClient(id, data as Client)
+      : await userApi.updateEmployee(id, data as Employee);
   },
 
-  deleteUser: async (type: "clients" | "employees", id: string) => {
-    const res = await axios.delete(`${API_BASE}/${type}/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } });
-    return res.data;
+  deleteUser: async (
+    type: "clients" | "employees",
+    id: string
+  ): Promise<void> => {
+    return type === "clients"
+      ? await userApi.deleteClient(id)
+      : await userApi.deleteEmployee(id);
   },
 
-  toggleLock: async (type: "clients" | "employees", id: string, status: string) => {
-    const newStatus = status === "LOCKED" ? "unlock" : "lock";
-    const res = await axios.put(`${API_BASE}/${type}/${id}/${newStatus}`, { status: newStatus }, { headers: { Authorization: `Bearer ${getToken()}` } });
-    return res.data;
+  toggleLock: async (
+    type: "clients" | "employees",
+    id: string,
+    status: string
+  ) => {
+    if (type === "clients") {
+      return status === "UNLOCKED"
+        ? await userApi.lockClient(id)
+        : await userApi.unlockClient(id);
+    } else {
+      return status === "UNLOCKED"
+        ? await userApi.lockEmployee(id)
+        : await userApi.unlockEmployee(id);
+    }
   },
 };

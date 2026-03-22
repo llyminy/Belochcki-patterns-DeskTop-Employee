@@ -1,4 +1,4 @@
-export type Status = "ACTIVE" | "BLOCKED";
+export type Status = "LOCKED" | "UNLOCKED";
 
 export interface Client {
   id: string;
@@ -14,3 +14,5 @@ export interface Employee {
   login: string;
   status: Status;
 }
+
+export type User = Client | Employee;

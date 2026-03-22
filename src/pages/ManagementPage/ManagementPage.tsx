@@ -101,14 +101,25 @@ export default function ManagementPage() {
         />
       ) : null}
 
+
       <DataTable
         data={filtered}
-        onDelete={(id: string) => userUseCase.deleteUser(type, id).then(load)}
+        columns={[
+          { field: "id", label: "ID" },
+          { field: "name", label: "Name" },
+          { field: "login", label: "Login" },
+          { field: "status", label: "Status" },
+        ]}
+        onDelete={(id: string) =>
+          userUseCase.deleteUser(type, id).then(load)
+        }
         onLock={(user: any) =>
           userUseCase.toggleLock(type, user.id, user.status).then(load)
         }
         onEdit={handleEdit}
-        onRowClick={handleRowClick}
+        onRowClick={(user) =>
+          navigate(`/user/${type}/${user.id}`)
+        }
       />
     </Box>
   );
