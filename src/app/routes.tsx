@@ -17,6 +17,7 @@ import  CreditDetailPage from "../pages/CreditPage/CreditDetailsPage.tsx";
 
 import  UserPage from "../pages/ManagementPage/ManagementPage.tsx";
 import  UserDetailsPage from "../pages/ManagementPage/UserDetailPage.tsx";
+import CurrencyPage from "../pages/CurrencyPage/CurrencyPage.tsx";
 
 export const AppRoutes = () => {
   return (
@@ -45,6 +46,8 @@ export const AppRoutes = () => {
 
         <Route path="/user/:type/:id" element={<UserDetailsPage />} />
         <Route path="/users" element={<UserPage />} />
+
+        <Route path="/currencies" element={<CurrencyPage />} />
       </Route>
     </Routes>
   );
