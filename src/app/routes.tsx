@@ -27,8 +27,8 @@ export const AppRoutes = () => {
         <Route path="/main" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/accounts" element={<AccountsPage />} />
-        <Route path="/debitaccount/:accountId" element={<DebitAccountPage />} />
-        <Route path="/creditaccount/:accountId" element={<CreditAccountPage />} />
+        <Route path="/debitaccount/:accountId/:clientId" element={<DebitAccountPage />} />
+        <Route path="/creditaccount/:accountId/:clientId" element={<CreditAccountPage />} />
         <Route path="/credits" element={<CreditsPage />} />
         <Route path="/abountUs" element={<AbountUsPage />} />
         <Route path="/credit-tariffs" element={<CreditTariffPage />} />

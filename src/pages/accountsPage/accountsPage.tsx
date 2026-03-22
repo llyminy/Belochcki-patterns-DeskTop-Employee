@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate} from "react-router-dom";
-import { Box, Grid, Pagination, Typography, Button} from "@mui/material";
+import { Box, Grid, Pagination, Typography} from "@mui/material";
 import type {Account, AccountsResponse} from "../../shared/api/account/accounts";
 import { fetchDebitAccounts, fetchCreditAccounts } from "../../shared/api/account/accounts";
 import { AccountCard, CreditAccountCard } from "../../entities/account/accountCard";
-import { CreateDebitForm } from "../../features/createDebitAccount/createDebitAccount";
-
 export const AccountsPage = () => {
   const [debitAccounts, setDebitAccounts] = useState<Account[]>([]);
   const [creditAccounts, setCraditAccounts] = useState<Account[]>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [openForm, setOpenForm] = useState(false);
   const pageSize = 6;
   const navigate = useNavigate();
   
@@ -51,13 +48,6 @@ export const AccountsPage = () => {
 
   return (
     <Box sx={{ display: "flex", gap: 2, alignItems: "center" , flexDirection: "column", width: "70%"}}>
-      <Button
-        variant="contained"
-        sx={{ width: "50%"}}
-        fullWidth
-        onClick={() => setOpenForm(true)}
-      > Открыть новый дебетовый счёт
-      </Button>
       <Box sx={{ p: 4, display: "flex",  flexDirection: "row", width: "70%"}}>
         <Grid container spacing={4}>
           <Grid size={{ xs: 12, md: 9 }}>
@@ -106,11 +96,6 @@ export const AccountsPage = () => {
             </Grid>
           )}
         </Box>
-        <CreateDebitForm
-          open={openForm}
-          onClose={() => setOpenForm(false)}
-          onDebitCreated={loadDebitAccounts}
-        />
       </Box>
     </Box>
   );

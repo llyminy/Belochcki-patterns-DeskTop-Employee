@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Grid, Typography} from "@mui/material";
 
 import type { Account } from "../../shared/api/account/accounts";
 import { fetchDebitAccount } from "../../shared/api/account/accounts";
@@ -11,14 +11,14 @@ import type {AccountOperation} from "../../shared/api/account/accountOperations"
 import { fetchDebitAccountOperations } from "../../shared/api/account/accountOperations";
 import { connectAccountOperationsWs } from "../../shared/api/ws/accountOperationsWs";
 import { AccountOperationsList } from "../../entities/account/accountOperationsList";
-import {OperationDebitForm} from "../../features/accountOperations/accountOperations"
 
 export const DebitAccountPage = () => {
   const [debitAccount, setDebitAccount] = useState<Account | null>(null);
   const [operations, setOperations] = useState<AccountOperation[]>([]);
-  const [openForm, setOpenForm] = useState(false);
 
   const accountID = useParams().accountId;
+  const clientID = useParams().clientId;
+  localStorage.setItem("clientID", clientID);
   const navigate = useNavigate();
 
   const loadDebitAccount = useCallback(async () => {
@@ -89,14 +89,6 @@ export const DebitAccountPage = () => {
         <Grid container spacing={4} sx={{ width: "100%" }}>
           <Grid size={{ xs: 12, md: 9 }}>
             <Box sx={{ display: "flex", flexDirection: "column", minHeight: 600 }}>
-              <Button
-                variant="contained"
-                sx={{ width: "50%" }}
-                fullWidth
-                onClick={() => setOpenForm(true)}
-              >
-                Операции
-              </Button>
               <Box sx={{ flex: 1 }}>
                 {!debitAccount ? (
                   <Typography variant="body1" sx={{ textAlign: "center", mt: 4 }}>
@@ -114,12 +106,6 @@ export const DebitAccountPage = () => {
             </Box>
           </Grid>
         </Grid>
-
-        <OperationDebitForm
-          open={openForm}
-          onClose={() => setOpenForm(false)}
-          onExchange={reloadPageData}
-        />
       </Box>
     </Box>
   );
