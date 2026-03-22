@@ -13,6 +13,7 @@ export interface Employee {
   name: string;
   login: string;
   status: Status;
+  creditRating: Int16Array;
 }
 
 export type User = Client | Employee;
