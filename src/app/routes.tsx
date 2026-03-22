@@ -7,11 +7,15 @@ import { ProfilePage } from "../pages/profilePage/ProfilePage.tsx";
 import { AccountsPage } from "../pages/accountsPage/accountsPage.tsx";
 import { DebitAccountPage } from "../pages/debitAccountPage/debitAccountPage.tsx";
 import { CreditAccountPage } from "../pages/creditAccountPage/creditAccountPage.tsx";
+
+import { CreditTariffsPage } from "../pages/creditTariffsPage/creditTariffsPage.tsx";
 import { CreditsPage } from "../pages/creditsPage/creditsPage.tsx";
 import { AbountUsPage } from "../pages/abountUsPage/abountUsPage.tsx";
 import { Error500Page } from "../pages/error500/error500.tsx";
 import  CreditTariffPage from "../pages/CreditTariffPage/CreditTariffPage.tsx";
 import  CreditTariffDetailPage from "../pages/CreditTariffPage/CreditTariffDetailPage.tsx";
+import  CreditPage from "../pages/CreditPage/CreditsPage.tsx";
+import  CreditDetailPage from "../pages/CreditPage/CreditDetailsPage.tsx";
 
 import  UserPage from "../pages/ManagementPage/ManagementPage.tsx";
 import  UserDetailsPage from "../pages/ManagementPage/UserDetailPage.tsx";
@@ -27,9 +31,17 @@ export const AppRoutes = () => {
         <Route path="/main" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/accounts" element={<AccountsPage />} />
+<<<<<<< HEAD
         <Route path="/debitaccount/:accountId/:clientId" element={<DebitAccountPage />} />
         <Route path="/creditaccount/:accountId/:clientId" element={<CreditAccountPage />} />
         <Route path="/credits" element={<CreditsPage />} />
+=======
+        <Route path="/debitaccount/:accountId" element={<DebitAccountPage />} />
+        <Route path="/creditaccount/:accountId" element={<CreditAccountPage />} />
+        <Route path="/credits" element={<CreditPage />} />
+        <Route path="/credit/:id" element={<CreditDetailPage />} />
+        <Route path="/tariffs" element={<CreditTariffsPage />} />
+>>>>>>> d32c3d1930119a8b38d96784e63fdfae8167a2fe
         <Route path="/abountUs" element={<AbountUsPage />} />
         <Route path="/credit-tariffs" element={<CreditTariffPage />} />
         <Route path="/credit-tariffs/:id" element={<CreditTariffDetailPage />} />
