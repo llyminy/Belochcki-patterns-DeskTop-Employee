@@ -1,15 +1,15 @@
 import { useEffect, useState} from "react";
 import { useNavigate, Link, useParams} from "react-router-dom";
-import { Box, Grid, Typography, Button} from "@mui/material";
+import { Box, Grid, Typography} from "@mui/material";
 import type {Account} from "../../shared/api/account/accounts";
 import { fetchCreditAccount } from "../../shared/api/account/accounts";
 import { CreditAccountCard } from "../../entities/account/accountCard";
-import { OperationCreditForm } from "../../features/accountOperations/accountOperations";
 
 export const CreditAccountPage = () => {
   const [creditAccount, setCreditAccount] = useState<Account | null>(null);
-  const [openForm, setOpenForm] = useState(false);
   const accountID = useParams().accountId;
+  const clientID = useParams().clientId;
+  localStorage.setItem("clientID", clientID);
   
   const navigate = useNavigate();
   
@@ -51,21 +51,9 @@ export const CreditAccountPage = () => {
                     <CreditAccountCard account={creditAccount} />
                 )}
                 </Box>
-                <Button
-                    variant="contained"
-                    sx={{ width: "50%"}}
-                    fullWidth
-                    onClick={() => setOpenForm(true)}
-                    > Операции
-                </Button>
             </Box>
           </Grid>
         </Grid>
-        <OperationCreditForm
-          open={openForm}
-          onClose={() => setOpenForm(false)}
-          onExchange={loadCreditAccount}
-        />
       </Box>
     </Box>
   );

@@ -10,7 +10,7 @@ export const AccountCard = ({ account: account }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/debitaccount/${account.id}`);
+    navigate(`/debitaccount/${account.id}/${account.clientId}`);
   };
 
   return (
@@ -35,7 +35,7 @@ export const CreditAccountCard = ({ account: account }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/creditaccount/${account.id}`);
+    navigate(`/creditaccount/${account.id}/${account.clientId}`);
   };
 
   return (
