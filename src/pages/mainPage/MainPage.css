@@ -10,6 +10,7 @@
   margin-bottom: 40px;
   font-weight: 600;
   color: #2c3e50;
+  transition: color 0.25s ease;
 }
 
 .card-grid {
@@ -27,7 +28,6 @@
   background: white;
   text-decoration: none;
   color: inherit;
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.25s ease;
 }
@@ -41,10 +41,34 @@
   margin: 0 0 10px;
   font-size: 20px;
   color: #1976d2;
+  transition: color 0.25s ease;
 }
 
 .card p {
   margin: 0;
   font-size: 14px;
   color: #555;
+  transition: color 0.25s ease;
+}
+
+body[data-theme='dark'] .main-title {
+  color: #f8fafc;
+}
+
+body[data-theme='dark'] .card {
+  background: #1e293b;
+  color: #f8fafc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme='dark'] .card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+body[data-theme='dark'] .card h3 {
+  color: #90caf9;
+}
+
+body[data-theme='dark'] .card p {
+  color: #cbd5e1;
 }
