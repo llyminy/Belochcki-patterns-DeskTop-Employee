@@ -53,14 +53,6 @@ export const AccountsPage = () => {
         py: 4,
       }}
     >
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 1 }}>
-          Мои счета
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Просмотр дебетовых и кредитных счетов, баланса и текущего статуса.
-        </Typography>
-      </Box>
 
       <Grid container spacing={3}>
         <Grid size={{ xs: 12, lg: 8 }}>
