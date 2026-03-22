@@ -52,6 +52,7 @@ export default function UserDetailPage() {
       <TextField label="Имя" value={user.name} fullWidth sx={{ mb: 2 }} InputProps={{ readOnly: true }} />
       <TextField label="Логин" value={user.login} fullWidth sx={{ mb: 2 }} InputProps={{ readOnly: true }} />
       <TextField label="Статус" value={user.status} fullWidth sx={{ mb: 2 }} InputProps={{ readOnly: true }} />
+      <TextField label="Кредитный рейтинг" value={user.creditRating} fullWidth sx={{ mb: 2 }} InputProps={{ readOnly: true }} />
     </Box>
   );
 }

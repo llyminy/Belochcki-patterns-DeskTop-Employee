@@ -109,6 +109,7 @@ export default function ManagementPage() {
           { field: "name", label: "Имя" },
           { field: "login", label: "Логин" },
           { field: "status", label: "Статус" },
+          { field: "creditRating", label: "Кредитный рейтинг" }
         ]}
         onDelete={(id: string) =>
           userUseCase.deleteUser(type, id).then(load)

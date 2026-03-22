@@ -15,16 +15,16 @@ export default function CreditsPage() {
 
   const columns = [
     { field: "id", label: "ID" },
-    { field: "clientId", label: "Client" },
-    { field: "creditAmount", label: "Amount" },
-    { field: "debtAmount", label: "Debt" },
-    { field: "creditStatus", label: "Status" },
-    { field: "creditTariffId", label: "CreditTariffId" },
+    { field: "clientId", label: "Клиент" },
+    { field: "creditAmount", label: "Сумма" },
+    { field: "debtAmount", label: "Задолженность" },
+    { field: "creditStatus", label: "Статус" },
+    { field: "creditTariffId", label: "ID Тарифа" },
   ];
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4">Credits</Typography>
+      <Typography variant="h4">Кредиты</Typography>
 
       <DataTable
         data={data}
