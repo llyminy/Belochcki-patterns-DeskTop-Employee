@@ -32,7 +32,7 @@ export const AppRoutes = () => {
 
         <Route path="/debitaccount/:accountId/:clientId" element={<DebitAccountPage />} />
         <Route path="/creditaccount/:accountId/:clientId" element={<CreditAccountPage />} />
-        <Route path="/credits" element={<CreditsPage />} />
+        <Route path="/credits" element={<CreditPage />} />
 
         <Route path="/debitaccount/:accountId" element={<DebitAccountPage />} />
         <Route path="/creditaccount/:accountId" element={<CreditAccountPage />} />

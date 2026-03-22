@@ -21,6 +21,7 @@ interface Props<T> {
   onRowClick?: (row: T) => void;
 }
 
+
 export default function DataTable<T extends { id: string }>({
   data,
   columns,
