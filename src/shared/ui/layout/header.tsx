@@ -7,7 +7,7 @@ export default function Header() {
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
-    navigate("/login");
+    window.location.href = "http://localhost:5173/main";
   };
 
   return (

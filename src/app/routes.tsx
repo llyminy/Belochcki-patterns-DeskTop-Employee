@@ -11,12 +11,17 @@ import { CreditsPage } from "../pages/creditsPage/creditsPage.tsx";
 import { CreditTariffsPage } from "../pages/creditTariffsPage/creditTariffsPage.tsx";
 import { AbountUsPage } from "../pages/abountUsPage/abountUsPage.tsx";
 import { Error500Page } from "../pages/error500/error500.tsx";
+import  CreditTariffPage from "../pages/CreditTariffPage/CreditTariffPage.tsx";
+import  CreditTariffDetailPage from "../pages/CreditTariffPage/CreditTariffDetailPage.tsx";
+
+import  UserPage from "../pages/ManagementPage/ManagementPage.tsx";
+import  UserDetailsPage from "../pages/ManagementPage/UserDetailPage.tsx";
 
 export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<MainPage />} />
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Navigate to="/main" replace />} />
  
       <Route element={<MainLayout />}>
         <Route path="*" element={<h1>Страница не найдена</h1>} />
@@ -29,6 +34,11 @@ export const AppRoutes = () => {
         <Route path="/credits" element={<CreditsPage />} />
         <Route path="/tariffs" element={<CreditTariffsPage />} />
         <Route path="/abountUs" element={<AbountUsPage />} />
+        <Route path="/credit-tariffs" element={<CreditTariffPage />} />
+        <Route path="/credit-tariffs/:id" element={<CreditTariffDetailPage />} />
+
+        <Route path="/user/:type/:id" element={<UserDetailsPage />} />
+        <Route path="/users" element={<UserPage />} />
       </Route>
     </Routes>
   );
