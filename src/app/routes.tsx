@@ -7,7 +7,9 @@ import { ProfilePage } from "../pages/profilePage/ProfilePage.tsx";
 import { AccountsPage } from "../pages/accountsPage/accountsPage.tsx";
 import { DebitAccountPage } from "../pages/debitAccountPage/debitAccountPage.tsx";
 import { CreditAccountPage } from "../pages/creditAccountPage/creditAccountPage.tsx";
+
 import { CreditTariffsPage } from "../pages/creditTariffsPage/creditTariffsPage.tsx";
+import { CreditsPage } from "../pages/creditsPage/creditsPage.tsx";
 import { AbountUsPage } from "../pages/abountUsPage/abountUsPage.tsx";
 import { Error500Page } from "../pages/error500/error500.tsx";
 import  CreditTariffPage from "../pages/CreditTariffPage/CreditTariffPage.tsx";

@@ -17,8 +17,6 @@ export const AccountsPage = () => {
   
   const loadDebitAccounts = async () => {
     try {
-      localStorage.setItem("accessToken", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjOGQ0MGVlYi02ZWY2LTQ2MDQtOTk0OC0yZmVjMWMyMTgwYjkiLCJzY29wZSI6IkVNUExPWUVFIENMSUVOVCIsImxvZ2luIjoic3RyaW5nIiwiaWF0IjoxNzc0MTY0Mjg0LCJleHAiOjE3NzQxNjc4ODR9.Ak5ihyh5RzWq4rwKy3StKvo5muDMrwiNshJ4VCEZ6Ek");
-      localStorage.setItem("clientID", "c8d40eeb-6ef6-4604-9948-2fec1c2180b9");
       const data: AccountsResponse = await fetchDebitAccounts(page, pageSize);
 
       setDebitAccounts(data?.content ?? []);
