@@ -8,7 +8,14 @@ export const MainPage = () => {
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
+
         const token = params.get("accessToken");
+        const userId = params.get("userId");
+
+        if (userId){
+            localStorage.setItem("userId", userId);
+        }
+
         if (token) {
           localStorage.setItem("accessToken", token);
           window.history.replaceState({}, document.title, "/");

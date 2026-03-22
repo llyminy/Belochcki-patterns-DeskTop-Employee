@@ -7,12 +7,13 @@ import { ProfilePage } from "../pages/profilePage/ProfilePage.tsx";
 import { AccountsPage } from "../pages/accountsPage/accountsPage.tsx";
 import { DebitAccountPage } from "../pages/debitAccountPage/debitAccountPage.tsx";
 import { CreditAccountPage } from "../pages/creditAccountPage/creditAccountPage.tsx";
-import { CreditsPage } from "../pages/creditsPage/creditsPage.tsx";
 import { CreditTariffsPage } from "../pages/creditTariffsPage/creditTariffsPage.tsx";
 import { AbountUsPage } from "../pages/abountUsPage/abountUsPage.tsx";
 import { Error500Page } from "../pages/error500/error500.tsx";
 import  CreditTariffPage from "../pages/CreditTariffPage/CreditTariffPage.tsx";
 import  CreditTariffDetailPage from "../pages/CreditTariffPage/CreditTariffDetailPage.tsx";
+import  CreditPage from "../pages/CreditPage/CreditsPage.tsx";
+import  CreditDetailPage from "../pages/CreditPage/CreditDetailsPage.tsx";
 
 import  UserPage from "../pages/ManagementPage/ManagementPage.tsx";
 import  UserDetailsPage from "../pages/ManagementPage/UserDetailPage.tsx";
@@ -30,7 +31,8 @@ export const AppRoutes = () => {
         <Route path="/accounts" element={<AccountsPage />} />
         <Route path="/debitaccount/:accountId" element={<DebitAccountPage />} />
         <Route path="/creditaccount/:accountId" element={<CreditAccountPage />} />
-        <Route path="/credits" element={<CreditsPage />} />
+        <Route path="/credits" element={<CreditPage />} />
+        <Route path="/credit/:id" element={<CreditDetailPage />} />
         <Route path="/tariffs" element={<CreditTariffsPage />} />
         <Route path="/abountUs" element={<AbountUsPage />} />
         <Route path="/credit-tariffs" element={<CreditTariffPage />} />
