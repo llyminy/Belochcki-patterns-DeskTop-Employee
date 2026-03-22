@@ -39,6 +39,11 @@ export const MainPage = () => {
                 <p>Просмотр и управление дебетовыми и кредитными счетами</p>
                 </Link>
 
+                <Link to="/currencies" className="card">
+                <h3>Валюты</h3>
+                <p>Создание и блок кодов валют</p>
+                </Link>
+
                 <Link to="/credit-tariffs" className="card">
                 <h3>Кредитные тарифы</h3>
                 <p>Лучшие предложения по кредитам</p>
